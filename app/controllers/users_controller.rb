@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  before_action :require_login
+
 
   # get '/users' do
   def index
@@ -10,14 +10,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+    else
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def new
     @user = User.new
   end
-
-
 
   # post '/users/'
   def create
