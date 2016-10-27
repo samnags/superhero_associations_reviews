@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  helper_method :require_login
 
   def new
 
@@ -13,6 +14,11 @@ class SessionsController < ApplicationController
     else
     redirect_to login_path
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to login_path
   end
 
 end
