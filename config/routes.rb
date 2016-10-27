@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
+  get '/login' => 'sessions#new'
 
-  # resources :superheros
-  # resources :users, except: [:index]
+  post '/sessions' => 'sessions#create'
 
+  resources :users
 
 end

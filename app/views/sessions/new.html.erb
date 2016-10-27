@@ -1,1 +1,5 @@
-test 
+<%= form_tag('/sessions') do %>
+  <%= label_tag 'email' %>
+  <%= text_field_tag 'user[email]' %>
+  <%= submit_tag 'Login' %>
+<% end %>
